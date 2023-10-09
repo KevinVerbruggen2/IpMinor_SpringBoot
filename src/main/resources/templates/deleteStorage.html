@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head(title='delete')}"><title>Delete Regatta</title></head>
+<body>
+<header th:replace="~{fragments/header :: header(current='delete')}"></header>
+<main class="row mt-5">
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <h3 th:text="#{storage.delete.confirmation}"></h3>
+    <span th:if="${error != null}" th:text="${error}" class="text-danger"></span>
+    <form method="post" th:action="@{/storage/delete(id=${storageDto.getId()})}">
+      <button class="btn btn-success px-5 mx-2" type="submit" name="action" value="submit">Yes</button>
+      <button class="btn btn-danger px-5 mx-2" type="submit" name="action" value="cancel">No</button>
+    </form>
+  </div>
+
+</main>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script><!-- Third party plugin JS-->
+</body>
+</html>

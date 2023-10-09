@@ -1,0 +1,2 @@
+insert into regatta (ID, CATEGORY, DATE, MAX_TEAMS, NAME, ORGANIZING_CLUB) values (1, 'A', '2023-03-23', 10, 'Regatta 1', 'Club 1');
+insert into regatta (ID, CATEGORY, DATE, MAX_TEAMS, NAME, ORGANIZING_CLUB) values (2, 'B', '2023-03-29', 10, 'Regatta 2', 'Club 2');

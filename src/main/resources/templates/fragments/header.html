@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+              <a class="nav-link" href="/storage/add" th:text="#{storage.add}" sec:authorize="hasRole('ADMIN')"></a>
+            </li>
+          <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+            <a class="nav-link" href="/regatta/add" th:text="#{regatta.add}"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/regatta/overview" th:text="#{regatta.overview}" sec:authorize="isAuthenticated()"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/storage/overview" th:text="#{storage.overview}" sec:authorize="isAuthenticated()"></a>
+          </li>
+        </ul>
+
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${#strings.toUpperCase(#locale)}"></a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" th:href="@{/lng/(lang=nl)}" th:text="#{dutch}">Dutch</a></li>
+              <li><a class="dropdown-item" th:href="@{/lng/(lang=en)}" th:text="#{english}">English</a></li>
+            </ul>
+          </li>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="btn btn-primary" href="/login" sec:authorize="isAnonymous()">Login</a>
+            <a class="btn btn-primary" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+</header>
+</body>
+</html>
